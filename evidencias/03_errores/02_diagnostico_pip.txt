@@ -1,0 +1,25 @@
+$ env | grep -i pip
+
+$ python3 -m pip config list -v
+For variant 'global', will try loading '/etc/xdg/pip/pip.conf'
+For variant 'global', will try loading '/etc/pip.conf'
+For variant 'user', will try loading '/home/jfernandez/.pip/pip.conf'
+For variant 'user', will try loading '/home/jfernandez/.config/pip/pip.conf'
+For variant 'site', will try loading '/usr/pip.conf'
+global.require-virtualenv='true'
+
+$ cat /home/jfernandez/.config/pip/pip.conf
+[global]
+require-virtualenv = true
+
+$ cat /home/jfernandez/.pip/pip.conf
+cat: /home/jfernandez/.pip/pip.conf: No such file or directory
+$ cat /etc/pip.conf
+cat: /etc/pip.conf: No such file or directory
+
+$ grep -n PIP ~/.zshrc ~/.bashrc ~/.profile
+
+$ ls ~/.venvs
+ls: no se puede acceder a '/home/jfernandez/.venvs': No existe el archivo o directorio
+$ python3 -c "import ensurepip"
+ensurepip OK

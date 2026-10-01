@@ -1,0 +1,15 @@
+$ ls sim/unitree_mujoco/unitree_robots/
+g1
+go2
+
+$ python3 -m sim --solo-revisar
+
+  Revisando que este todo listo...
+
+  [OK]    Python 3.14.4
+  [OK]    MuJoCo v3.14.0
+  [OK]    Modelos oficiales de Unitree /home/jfernandez/Escritorio/allProject/UADE/TPO2Robot/UadeRobotLab/05LaboratoriosTPs/TP02_Programacion_I/entorno/sim/unitree_mujoco
+
+  Todo listo.
+
+exit=0

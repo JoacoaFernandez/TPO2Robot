@@ -1,0 +1,50 @@
+$ date
+jue 01 oct 2026 18:45:59 -03
+
+$ cat /etc/os-release | head -5
+PRETTY_NAME="Ubuntu 26.04.1 LTS"
+NAME="Ubuntu"
+VERSION_ID="26.04"
+VERSION="26.04.1 LTS (Resolute Raccoon)"
+VERSION_CODENAME=resolute
+
+$ uname -a
+Linux jfernandez 7.0.0-34-generic #34-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep  2 14:29:37 UTC 2026 x86_64 GNU/Linux
+
+$ python3 --version
+Python 3.14.4
+
+$ python --version
+Python 3.14.4
+
+$ which python3
+/usr/bin/python3
+
+$ python3 -m pip --version
+pip 25.1.1 from /usr/lib/python3/dist-packages/pip (python 3.14)
+
+$ git --version
+git version 2.53.0
+
+$ python3 -c "import mujoco; print(mujoco.__version__)"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import mujoco; print(mujoco.__version__)
+    ^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'mujoco'
+
+$ ls /usr/lib/python3*/EXTERNALLY-MANAGED
+/usr/lib/python3.14/EXTERNALLY-MANAGED
+
+$ glxinfo -B | head -8
+name of display: :0
+display: :0  screen: 0
+direct rendering: Yes
+Extended renderer info (GLX_MESA_query_renderer):
+    Vendor: Intel (0x8086)
+    Device: Mesa Intel(R) Arc(tm) Graphics (MTL) (0x7d55)
+    Version: 26.0.8
+    Accelerated: yes
+
+$ echo $XDG_SESSION_TYPE
+wayland

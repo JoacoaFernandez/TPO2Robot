@@ -1,0 +1,27 @@
+$ python3 -m venv .venv
+exit=0
+
+$ source .venv/bin/activate && which python3 && python3 --version
+/home/jfernandez/Escritorio/allProject/UADE/TPO2Robot/.venv/bin/python3
+Python 3.14.4
+
+$ python3 -m pip install mujoco
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 28.8/28.8 MB 4.7 MB/s eta 0:00:00
+Downloading websockets-17.1-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (224 kB)
+Downloading absl_py-2.5.0-py3-none-any.whl (137 kB)
+Downloading etils-1.14.0-py3-none-any.whl (172 kB)
+Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)
+Downloading glfw-2.10.2-py2.py3-none-manylinux_2_28_x86_64.whl (248 kB)
+Downloading numpy-2.5.3-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 7.1 MB/s eta 0:00:00
+Downloading pyopengl-3.1.10-py3-none-any.whl (3.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 2.9 MB/s eta 0:00:00
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading zipp-4.1.0-py3-none-any.whl (10 kB)
+Installing collected packages: pyopengl, glfw, zipp, websockets, typing_extensions, numpy, fsspec, etils, absl-py, mujoco
+
+Successfully installed absl-py-2.5.0 etils-1.14.0 fsspec-2026.9.0 glfw-2.10.2 mujoco-3.14.0 numpy-2.5.3 pyopengl-3.1.10 typing_extensions-4.16.0 websockets-17.1 zipp-4.1.0
+exit=
+
+$ python3 -c "import mujoco; print(mujoco.__version__)"
+3.14.0
