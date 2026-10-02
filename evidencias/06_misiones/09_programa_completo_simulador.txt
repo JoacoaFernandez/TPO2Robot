@@ -1,0 +1,128 @@
+$ python3 mi_desarrollo/mi_tp02.py   (programa completo: 4 misiones + reportes, contra el simulador Go2)
+[OK] Conectado a Unitree Go2 (perro).
+     Limites: 0.2 m/s, 0.5 rad/s, 10.0 s por orden.
+
+################ MISION_BASICA ################
+
+=== Iniciando mision: 4 comando(s) ===
+  [1/4] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [2/4] OK         ('girar', -0.5, 3.14): giro 90 grados a la derecha
+  [3/4] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [4/4] OK         ('detenerse',): se detuvo
+=== Mision finalizada ===
+
+============================================================
+                     REPORTE DE MISION                      
+============================================================
+  Comandos recibidos:   4
+  Comandos ejecutados:  4
+  Comandos rechazados:  0
+  Distancia recorrida:  0.8 m
+  Total girado:         90 grados
+  Duracion estimada:    7.14 s
+============================================================
+
+################ MISION_CON_ERRORES ################
+
+=== Iniciando mision: 11 comando(s) ===
+  [1/11] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [2/11] OK         ('girar', -0.5, 3.14): giro 90 grados a la derecha
+  [3/11] RECHAZADO  ('avanzar', 0.9, 2.0): 0.9 m/s esta fuera del rango (0, 0.2] m/s
+  [4/11] RECHAZADO  ('avanzar', 0.2, 50.0): 50.0 s supera el maximo de 10.0 s por comando
+  [5/11] RECHAZADO  ('girar', 3.0, 2.0): 3.0 rad/s esta fuera del rango permitido (+-0.5 rad/s, distinto de 0)
+  [6/11] RECHAZADO  ('volar', 0.2, 1.0): 'volar' no es un comando valido
+  [7/11] RECHAZADO  ('avanzar', 'rapido', 2.0): la velocidad tiene que ser un numero, no 'rapido'
+  [8/11] RECHAZADO  ('avanzar', 0.2): 'avanzar' lleva 2 dato(s) y recibio 1
+  [9/11] RECHAZADO  ('avanzar', 0.2, -3.0): el tiempo tiene que ser mayor a 0 (recibio -3.0 s)
+  [10/11] OK         ('saludar',): saludo
+  [11/11] OK         ('detenerse',): se detuvo
+=== Mision finalizada ===
+
+============================================================
+                     REPORTE DE MISION                      
+============================================================
+  Comandos recibidos:   11
+  Comandos ejecutados:  4
+  Comandos rechazados:  7
+  Distancia recorrida:  0.4 m
+  Total girado:         90 grados
+  Duracion estimada:    5.14 s
+------------------------------------------------------------
+  Motivo de cada rechazo:
+    #3 ('avanzar', 0.9, 2.0)
+       -> 0.9 m/s esta fuera del rango (0, 0.2] m/s
+    #4 ('avanzar', 0.2, 50.0)
+       -> 50.0 s supera el maximo de 10.0 s por comando
+    #5 ('girar', 3.0, 2.0)
+       -> 3.0 rad/s esta fuera del rango permitido (+-0.5 rad/s, distinto de 0)
+    #6 ('volar', 0.2, 1.0)
+       -> 'volar' no es un comando valido
+    #7 ('avanzar', 'rapido', 2.0)
+       -> la velocidad tiene que ser un numero, no 'rapido'
+    #8 ('avanzar', 0.2)
+       -> 'avanzar' lleva 2 dato(s) y recibio 1
+    #9 ('avanzar', 0.2, -3.0)
+       -> el tiempo tiene que ser mayor a 0 (recibio -3.0 s)
+============================================================
+
+################ MISION_CUADRADO ################
+
+=== Iniciando mision: 9 comando(s) ===
+  [1/9] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [2/9] OK         ('girar', -0.5, 3.14): giro 90 grados a la derecha
+  [3/9] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [4/9] OK         ('girar', -0.5, 3.14): giro 90 grados a la derecha
+  [5/9] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [6/9] OK         ('girar', -0.5, 3.14): giro 90 grados a la derecha
+  [7/9] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [8/9] OK         ('girar', -0.5, 3.14): giro 90 grados a la derecha
+  [9/9] OK         ('detenerse',): se detuvo
+=== Mision finalizada ===
+
+============================================================
+                     REPORTE DE MISION                      
+============================================================
+  Comandos recibidos:   9
+  Comandos ejecutados:  9
+  Comandos rechazados:  0
+  Distancia recorrida:  1.6 m
+  Total girado:         360 grados
+  Duracion estimada:    20.56 s
+============================================================
+
+################ MISION_PROPIA ################
+
+=== Iniciando mision: 11 comando(s) ===
+  [1/11] OK         ('avanzar', 0.2, 2.5): avanzo 0.50 m (0.2 m/s x 2.5 s)
+  [2/11] OK         ('girar', 0.5, 4.19): giro 120 grados a la izquierda
+  [3/11] OK         ('avanzar', 0.2, 2.5): avanzo 0.50 m (0.2 m/s x 2.5 s)
+  [4/11] RECHAZADO  ('girar', 0.5, 12.6): 12.6 s supera el maximo de 10.0 s por comando
+  [5/11] OK         ('girar', 0.5, 4.19): giro 120 grados a la izquierda
+  [6/11] RECHAZADO  ('avanzar', 0.25, 2.0): 0.25 m/s esta fuera del rango (0, 0.2] m/s
+  [7/11] OK         ('avanzar', 0.2, 2.5): avanzo 0.50 m (0.2 m/s x 2.5 s)
+  [8/11] OK         ('girar', 0.5, 4.19): giro 120 grados a la izquierda
+  [9/11] RECHAZADO  ('Saludar',): 'Saludar' no es un comando valido
+  [10/11] OK         ('saludar',): saludo
+  [11/11] OK         ('detenerse',): se detuvo
+=== Mision finalizada ===
+
+============================================================
+                     REPORTE DE MISION                      
+============================================================
+  Comandos recibidos:   11
+  Comandos ejecutados:  8
+  Comandos rechazados:  3
+  Distancia recorrida:  1.5 m
+  Total girado:         360 grados
+  Duracion estimada:    20.07 s
+------------------------------------------------------------
+  Motivo de cada rechazo:
+    #4 ('girar', 0.5, 12.6)
+       -> 12.6 s supera el maximo de 10.0 s por comando
+    #6 ('avanzar', 0.25, 2.0)
+       -> 0.25 m/s esta fuera del rango (0, 0.2] m/s
+    #9 ('Saludar',)
+       -> 'Saludar' no es un comando valido
+============================================================
+[OK] Desconectado.
+exit=0

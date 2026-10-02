@@ -1,0 +1,20 @@
+[OK] Conectado a Unitree Go2 (perro).
+     Limites: 0.2 m/s, 0.5 rad/s, 10.0 s por orden.
+Antes  : x=+0.40 m  y=-0.40 m  rumbo=-89.3 deg  [quieto]
+
+=== Iniciando mision: 11 comando(s) ===
+  [1/11] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [2/11] OK         ('girar', -0.5, 3.14): giro 90 grados a la derecha
+  [3/11] RECHAZADO  ('avanzar', 0.9, 2.0): 0.9 m/s esta fuera del rango (0, 0.2] m/s
+  [4/11] RECHAZADO  ('avanzar', 0.2, 50.0): 50.0 s supera el maximo de 10.0 s por comando
+  [5/11] RECHAZADO  ('girar', 3.0, 2.0): 3.0 rad/s esta fuera del rango permitido (+-0.5 rad/s, distinto de 0)
+  [6/11] RECHAZADO  ('volar', 0.2, 1.0): 'volar' no es un comando valido
+  [7/11] RECHAZADO  ('avanzar', 'rapido', 2.0): la velocidad tiene que ser un numero, no 'rapido'
+  [8/11] RECHAZADO  ('avanzar', 0.2): 'avanzar' lleva 2 dato(s) y recibio 1
+  [9/11] RECHAZADO  ('avanzar', 0.2, -3.0): el tiempo tiene que ser mayor a 0 (recibio -3.0 s)
+  [10/11] OK         ('saludar',): saludo
+  [11/11] OK         ('detenerse',): se detuvo
+=== Mision finalizada ===
+Despues: x=+0.40 m  y=-0.80 m  rumbo=-179.1 deg  [quieto]
+Ejecutados: 4 | Rechazados: 7
+[OK] Desconectado.

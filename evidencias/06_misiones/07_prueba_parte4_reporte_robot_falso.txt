@@ -1,0 +1,76 @@
+$ python3 codigo/pruebas/robot_falso.py 4
+
+##### Parte 4 con MISION_BASICA #####
+  Calculado a mano: 4 ejecutados, 0 rechazados, 0.8 m, 90 grados, 7.14 s
+
+
+============================================================
+                     REPORTE DE MISION                      
+============================================================
+  Comandos recibidos:   4
+  Comandos ejecutados:  4
+  Comandos rechazados:  0
+  Distancia recorrida:  0.8 m
+  Total girado:         90 grados
+  Duracion estimada:    7.14 s
+============================================================
+
+##### Parte 4 con MISION_CON_ERRORES #####
+  Calculado a mano: 4 ejecutados, 7 rechazados, 0.4 m, 90 grados, 5.14 s
+
+
+============================================================
+                     REPORTE DE MISION                      
+============================================================
+  Comandos recibidos:   11
+  Comandos ejecutados:  4
+  Comandos rechazados:  7
+  Distancia recorrida:  0.4 m
+  Total girado:         90 grados
+  Duracion estimada:    5.14 s
+------------------------------------------------------------
+  Motivo de cada rechazo:
+    #3 ('avanzar', 0.9, 2.0)
+       -> 0.9 m/s esta fuera del rango (0, 0.2] m/s
+    #4 ('avanzar', 0.2, 50.0)
+       -> 50.0 s supera el maximo de 10.0 s por comando
+    #5 ('girar', 3.0, 2.0)
+       -> 3.0 rad/s esta fuera del rango permitido (+-0.5 rad/s, distinto de 0)
+    #6 ('volar', 0.2, 1.0)
+       -> 'volar' no es un comando valido
+    #7 ('avanzar', 'rapido', 2.0)
+       -> la velocidad tiene que ser un numero, no 'rapido'
+    #8 ('avanzar', 0.2)
+       -> 'avanzar' lleva 2 dato(s) y recibio 1
+    #9 ('avanzar', 0.2, -3.0)
+       -> el tiempo tiene que ser mayor a 0 (recibio -3.0 s)
+============================================================
+
+##### Parte 4 con MISION_CUADRADO #####
+  Calculado a mano: 9 ejecutados, 0 rechazados, 1.6 m, 360 grados, 20.56 s
+
+
+============================================================
+                     REPORTE DE MISION                      
+============================================================
+  Comandos recibidos:   9
+  Comandos ejecutados:  9
+  Comandos rechazados:  0
+  Distancia recorrida:  1.6 m
+  Total girado:         360 grados
+  Duracion estimada:    20.56 s
+============================================================
+
+##### Parte 4 con historial vacio (mision sin comandos) #####
+
+============================================================
+                     REPORTE DE MISION                      
+============================================================
+  Comandos recibidos:   0
+  Comandos ejecutados:  0
+  Comandos rechazados:  0
+  Distancia recorrida:  0.0 m
+  Total girado:         0 grados
+  Duracion estimada:    0.0 s
+============================================================
+exit=0

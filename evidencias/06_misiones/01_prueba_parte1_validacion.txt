@@ -1,0 +1,35 @@
+
+=== MISION_BASICA (todos deberian ser VALIDOS) ===
+  VALIDO    ('avanzar', 0.2, 2.0)             
+  VALIDO    ('girar', -0.5, 3.14)             
+  VALIDO    ('avanzar', 0.2, 2.0)             
+  VALIDO    ('detenerse',)                    
+
+=== MISION_CON_ERRORES (esperado: 4 validos, 7 invalidos) ===
+  VALIDO    ('avanzar', 0.2, 2.0)             
+  VALIDO    ('girar', -0.5, 3.14)             
+  INVALIDO  ('avanzar', 0.9, 2.0)             0.9 m/s esta fuera del rango (0, 0.2] m/s
+  INVALIDO  ('avanzar', 0.2, 50.0)            50.0 s supera el maximo de 10.0 s por comando
+  INVALIDO  ('girar', 3.0, 2.0)               3.0 rad/s esta fuera del rango permitido (+-0.5 rad/s, distinto de 0)
+  INVALIDO  ('volar', 0.2, 1.0)               'volar' no es un comando valido
+  INVALIDO  ('avanzar', 'rapido', 2.0)        la velocidad tiene que ser un numero, no 'rapido'
+  INVALIDO  ('avanzar', 0.2)                  'avanzar' lleva 2 dato(s) y recibio 1
+  INVALIDO  ('avanzar', 0.2, -3.0)            el tiempo tiene que ser mayor a 0 (recibio -3.0 s)
+  VALIDO    ('saludar',)                      
+  VALIDO    ('detenerse',)                    
+
+=== Casos borde propios ===
+  INVALIDO  ()                                el comando tiene que ser una tupla no vacia
+  INVALIDO  'avanzar'                         el comando tiene que ser una tupla no vacia
+  INVALIDO  ('avanzar', '0.2', 2.0)           la velocidad tiene que ser un numero, no '0.2'
+  INVALIDO  ('avanzar', True, 2.0)            la velocidad tiene que ser un numero, no True
+  INVALIDO  ('avanzar', 0.2, nan)             el tiempo tiene que ser un numero, no nan
+  INVALIDO  ('avanzar', -0.1, 2.0)            -0.1 m/s esta fuera del rango (0, 0.2] m/s
+  INVALIDO  ('avanzar', 0.2, 0)               el tiempo tiene que ser mayor a 0 (recibio 0 s)
+  VALIDO    ('avanzar', 0.2, 10.0)            
+  VALIDO    ('girar', 0.5, 3.14)              
+  VALIDO    ('girar', -0.5, 1)                
+  INVALIDO  ('girar', 0, 2)                   0 rad/s esta fuera del rango permitido (+-0.5 rad/s, distinto de 0)
+  INVALIDO  ('detenerse', 1)                  'detenerse' lleva 0 dato(s) y recibio 1
+  VALIDO    ('saludar',)                      
+  INVALIDO  ('girar', 45, 'arriba')           el tiempo tiene que ser un numero, no 'arriba'

@@ -1,0 +1,27 @@
+
+  Revisando que este todo listo...
+
+  [OK]    Python 3.14.4
+  [OK]    MuJoCo v3.14.0
+  [OK]    Modelos oficiales de Unitree /home/jfernandez/Escritorio/allProject/UADE/TPO2Robot/UadeRobotLab/05LaboratoriosTPs/TP02_Programacion_I/entorno/sim/unitree_mujoco
+
+  Todo listo.
+
+==============================================================
+  SIMULADOR OFICIAL UNITREE - Laboratorios UADE
+==============================================================
+  Robot     : Unitree Go2 (cuadrupedo)
+  Escena    : go2/scene_uade.xml
+  Materia   : tp02-programacion-i
+  Limites   : 0.2 m/s | 0.5 rad/s | 10.0 s por orden
+  Transporte: local, 127.0.0.1:8765
+==============================================================
+
+  Deja esta ventana abierta y ejecuta tu programa aparte.
+  Para cerrar: Ctrl+C
+
+Failed to load plugin 'libdecor-gtk.so': failed to init
+No plugins found, falling back on no decorations
+  [LOCAL] Escuchando en 127.0.0.1:8765
+
+[SIM] Simulador cerrado.

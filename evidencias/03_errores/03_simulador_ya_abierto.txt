@@ -1,0 +1,27 @@
+$ python3 -m sim --robot go2 --materia tp02
+
+  Revisando que este todo listo...
+
+  [OK]    Python 3.14.4
+  [OK]    MuJoCo v3.14.0
+  [OK]    Modelos oficiales de Unitree /home/jfernandez/Escritorio/allProject/UADE/TPO2Robot/UadeRobotLab/05LaboratoriosTPs/TP02_Programacion_I/entorno/sim/unitree_mujoco
+
+  Todo listo.
+
+
+  ==========================================================
+  YA HAY UN SIMULADOR ABIERTO
+  ==========================================================
+
+    Robot   : go2
+    Materia : tp02
+    Proceso : 227645
+
+  Los dos escuchan en el mismo puerto, asi que el segundo no
+  podria abrir, o peor: tu programa terminaria hablandole al
+  OTRO robot sin ningun error que te avise.
+
+  Cerra la ventana del simulador que ya tenes abierta y volve
+  a intentar. Si estas seguro de que no hay ninguno, agrega
+  --igualmente al final del comando.
+  ==========================================================

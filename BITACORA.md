@@ -3,7 +3,7 @@
 > Se actualiza durante la actividad, no al final.
 > Estados: **RESUELTO** · **PARCIAL** · **PENDIENTE** · **NUEVO ERROR**
 
-## Nivel máximo alcanzado hasta ahora: **4** — Verificación del entorno correcta
+## Nivel máximo alcanzado: **10** — Reporte final generado
 
 | Nivel | Evidencia | Estado |
 |---|---|---|
@@ -11,12 +11,12 @@
 | 2 | MuJoCo importado correctamente | ✅ |
 | 3 | Modelos Go2 disponibles | ✅ |
 | 4 | Verificación del entorno correcta | ✅ |
-| 5 | Ventana MuJoCo abierta | ⏳ |
-| 6 | Go2 visible | ⏳ |
-| 7 | Programa conectado al simulador | ⏳ |
-| 8 | `MISION_BASICA` ejecutada | ⏳ |
-| 9 | `MISION_CON_ERRORES` procesada sin abortar | ⏳ |
-| 10 | Reporte final generado | ⏳ |
+| 5 | Ventana MuJoCo abierta | ✅ |
+| 6 | Go2 visible | ✅ |
+| 7 | Programa conectado al simulador | ✅ |
+| 8 | `MISION_BASICA` ejecutada | ✅ |
+| 9 | `MISION_CON_ERRORES` procesada sin abortar | ✅ |
+| 10 | Reporte final generado | ✅ |
 
 ---
 
@@ -87,4 +87,28 @@ Según el Orientador, para la implementación **prevalece el repositorio**.
 | 7 | `python3 -c "import mujoco; print(mujoco.__version__)"` | `3.14.0` | — | — | RESUELTO |
 | 8 | `ls entorno/sim/unitree_mujoco/unitree_robots/` | `g1  go2` | — | — | RESUELTO |
 | 9 | `cd entorno && python3 -m sim --solo-revisar` | `[OK] Python 3.14.4` · `[OK] MuJoCo v3.14.0` · `[OK] Modelos oficiales de Unitree` · `Todo listo.` | — | — | RESUELTO |
-| 10 | `./INICIAR_SIMULADOR.sh` → opción 2 (Go2) | | | | PENDIENTE |
+| 10 | `./INICIAR_SIMULADOR.sh` → opción 2 (Go2) | No se pudo abrir en el primer intento (02/10) | Ver acción 19 | Lanzamiento directo sin el menú | RESUELTO (ver 19) |
+| 11 | Lectura de `entorno/sim/safety.py` y `sim/robot.py` antes de programar | Límites del perfil `tp02`: 0.20 m/s, 0.50 rad/s, 10 s. El robot convierte con `float()` (acepta `"0.2"` como texto) y admite velocidad negativa en `avanzar` | La validación del robot es más permisiva que la que pide el TP | La validación propia chequea el tipo con `isinstance` y exige velocidad > 0 para avanzar | RESUELTO |
+| 12 | Parte 1: `comando_es_valido()` + auxiliares `es_numero()` y `motivo_de_rechazo()` | Implementada | La plantilla pide devolver `True/False`, pero el reporte necesita el motivo | `motivo_de_rechazo()` devuelve el texto o `None`; `comando_es_valido()` la reutiliza (sin duplicar lógica) | RESUELTO |
+| 13 | Prueba aislada de la parte 1 (sin simulador) con `MISION_BASICA`, `MISION_CON_ERRORES` y 14 casos borde | 25/25 casos con el resultado esperado. `MISION_CON_ERRORES`: 4 válidos, 7 inválidos, cada uno con su motivo | — | — | RESUELTO |
+| 14 | Parte 2: `ejecutar_comando(robot, comando)` | Implementada con `try/except ErrorDeSeguridad` y `NotImplementedError` | La plantilla pide devolver un texto, pero la parte 3 necesita saber si se ejecutó o no | Devuelve una tupla `(ejecutado, texto)`. En el `except` llama a `robot.detenerse()`, como pide `safety.py` ("rechazar implica frenar") | RESUELTO |
+| 15 | Creado `codigo/pruebas/robot_falso.py`: imita al robot usando los mismos validadores de `safety.py` (perfil tp02) | Permite probar sin el simulador abierto | El robot real exige el simulador (`NoHaySimulador`) | Robot falso con los mismos métodos y las mismas reglas de rechazo | RESUELTO |
+| 16 | `python3 codigo/pruebas/robot_falso.py` | `MISION_BASICA` 4/4 ejecutados. Comandos fuera de límite mandados **sin validar**: el robot los rechaza, se atrapa el error, se frena y el programa sigue. Saludo no soportado: atrapado | — | — | RESUELTO |
+| 17 | Parte 3: `ejecutar_mision(robot, mision, historial)` | Implementada: `for` + `enumerate`, `comando_es_valido()` para decidir, `continue` para saltear inválidos, un diccionario por comando en `historial` | — | — | RESUELTO |
+| 18 | `python3 codigo/pruebas/robot_falso.py 3` con BASICA, CON_ERRORES y CUADRADO | BASICA 4/4 · CON_ERRORES 4 ejecutados / 7 rechazados, sin abortar · CUADRADO 9/9. En los 3 casos el historial tiene un registro por comando, y la función devuelve `None` (la lista se modifica por referencia) | — | — | RESUELTO |
+| 19 | `python3 -m sim --robot go2 --materia tp02` (lo mismo que hace el lanzador al elegir 2, sin el menú interactivo), con el venv activado | Arrancó: `Robot: Unitree Go2`, `Materia: tp02-programacion-i`, `[LOCAL] Escuchando en 127.0.0.1:8765` | Aviso `Failed to load plugin 'libdecor-gtk.so'` → `falling back on no decorations`: con Wayland la ventana abre sin barra de título | No impide el funcionamiento; no requiere solución | RESUELTO |
+| 20 | `python3 mi_desarrollo/mi_tp02.py` (MISION_BASICA) | `[OK] Conectado a Unitree Go2`, 4/4 OK. Posición final `x=+0.40 y=-0.40 rumbo=-90.3°`, coincide con lo calculado (0.4 m, giro 90° a la derecha, 0.4 m) | — | — | RESUELTO |
+| 21 | MISION_CUADRADO contra el simulador | 9/9 OK. Volvió al punto de partida (`x=+0.40 y=-0.40`). Rumbo −90.3° → −89.3°: ~1° de deriva acumulada en 4 giros | — | — | RESUELTO |
+| 22 | MISION_CON_ERRORES contra el simulador | 4 ejecutados / 7 rechazados con su motivo; la misión no se cortó. El Go2 sí ejecuta `saludar()` | — | — | RESUELTO |
+| 23 | Segundo `python3 -m sim --robot go2 --materia tp02` desde otra terminal | `YA HAY UN SIMULADOR ABIERTO (Proceso 227645)` | Quedaba abierto el simulador de la acción 19. Ver **Problema 2** | `ps` para confirmar y `kill -INT 227645` (equivale a Ctrl+C) | RESUELTO |
+| 24 | Simulador abierto desde una terminal propia (`python3 -m sim --robot go2 --materia tp02`) + `MISION_CUADRADO` desde una segunda terminal | Ventana de MuJoCo con el Go2 visible; el robot recorre el cuadrado y vuelve al inicio (9/9 OK) | — | — | RESUELTO |
+| 25 | Capturas guardadas y descriptas en `evidencias/05_gemelo_digital/LEEME.md` | Niveles 5 y 6 con evidencia gráfica | — | — | RESUELTO |
+| 26 | Parte 4: `generar_reporte(historial)` | Implementada: recorre el historial y muestra recibidos, ejecutados, rechazados (con el motivo de cada uno), distancia, total girado y duración estimada. Usa `len()`, `round()`, `abs()` y `math.degrees()` | — | — | RESUELTO |
+| 27 | `python3 codigo/pruebas/robot_falso.py 4`, comparando contra valores calculados a mano | BASICA 0.8 m / 90° / 7.14 s · CON_ERRORES 4 ejec. / 7 rech. / 0.4 m / 90° / 5.14 s · CUADRADO 1.6 m / 360° / 20.56 s. Todos coinciden. Con el historial vacío no falla (todo en 0) | — | — | RESUELTO |
+| 28 | `python3 mi_desarrollo/mi_tp02.py` (main de la plantilla) contra el simulador Go2 | MISION_BASICA 4/4 y reporte generado: **nivel 10** | — | — | RESUELTO |
+| 29 | Encabezado con los datos del alumno, `MISION_PROPIA` (triángulo de 0.5 m de lado + saludo, 11 comandos, 3 inválidos a propósito) y `main()` definitivo que recorre `MISIONES_A_EJECUTAR` con un historial nuevo por misión (11 líneas) | Implementado | — | — | RESUELTO |
+| 30 | Revisión: `mi_tp02.py` estaba dentro de `UadeRobotLab/`, que está en `.gitignore` | — | El código fuente **no estaba versionado** | Movido a `codigo/tp02_fernandez_joaquin.py`; en `mi_desarrollo/` queda `mi_tp02.py` como enlace simbólico. Un solo archivo real. Import con `try/except ModuleNotFoundError` para encontrar `robot.py` también desde `codigo/` | RESUELTO |
+| 31 | Prueba de imports desde `codigo/`, desde el enlace en `mi_desarrollo/` y desde una copia suelta en `mi_desarrollo/` (como lo usaría el docente) + `robot_falso.py` completo | OK en los 4 casos | — | — | RESUELTO |
+| 32 | `python3 mi_desarrollo/mi_tp02.py`: programa completo contra el simulador Go2 | BASICA 4/0 · CON_ERRORES 4/7 · CUADRADO 9/0 · PROPIA 8/3, 1.5 m, 360°, 20.07 s: **coincide con el cálculo a mano**. Ninguna misión abortó | — | — | RESUELTO |
+| 33 | Capturas del programa final corriendo contra el simulador (reporte de MISION_CON_ERRORES y de MISION_PROPIA, con el Go2 visible) | Guardadas y descriptas en `evidencias/06_misiones/LEEME.md` (09b, 10 y 11) | — | — | RESUELTO |
+| 34 | Borradores de `CONCLUSIONES.md`, `INFORME.md` y `ESQUEMA_TOP_DOWN.md` | Escritos a partir de la bitácora, los problemas y las corridas | — | — | PENDIENTE (revisión del alumno) |

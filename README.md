@@ -8,8 +8,11 @@ TP02 de Programación I (UADE): un controlador de misiones para el robot Unitree
 |---|---|
 | `BITACORA.md` | Bitácora técnica: cada acción, su resultado y su estado |
 | `PROBLEMAS.md` | Análisis detallado de cada problema encontrado |
-| `CONCLUSIONES.md` | Reflexión final y nivel alcanzado |
-| `codigo/` | Código fuente del controlador (`tp02_apellido.py`) |
+| `CONCLUSIONES.md` | Reflexión final (preguntas a–g del Orientador) y nivel alcanzado |
+| `INFORME.md` | Informe de una página: diseño Top-Down, valor vs. referencia, misión propia |
+| `ESQUEMA_TOP_DOWN.md` | Esquema de funciones con sus entradas, salidas y responsabilidades |
+| `codigo/tp02_fernandez_joaquin.py` | **El controlador (lo que se entrega).** En `UadeRobotLab/.../mi_desarrollo/mi_tp02.py` hay un enlace simbólico a este archivo |
+| `codigo/pruebas/robot_falso.py` | Robot falso para probar las partes 2 a 4 sin el simulador |
 | `evidencias/` | Salidas de terminal y capturas, por etapa |
 | `enunciado/` | Consigna del TP y Orientador, pasados a Markdown |
 | `UadeRobotLab/` | Repo de la cátedra (no versionado, ver abajo) |
@@ -31,14 +34,20 @@ python3 -m sim --solo-revisar        # tiene que decir "Todo listo."
 
 ## Ejecutar
 
-Terminal 1 (simulador):
+Terminal 1 (simulador; se cierra con Ctrl+C):
 ```bash
 source .venv/bin/activate
-./UadeRobotLab/05LaboratoriosTPs/TP02_Programacion_I/INICIAR_SIMULADOR.sh   # elegir 2 - Go2
+cd UadeRobotLab/05LaboratoriosTPs/TP02_Programacion_I/entorno
+python3 -m sim --robot go2 --materia tp02      # o ../INICIAR_SIMULADOR.sh y elegir 2
 ```
 
-Terminal 2 (programa):
+Terminal 2 (programa: corre las 4 misiones y sus reportes):
 ```bash
 source .venv/bin/activate
-python3 UadeRobotLab/05LaboratoriosTPs/TP02_Programacion_I/mi_desarrollo/mi_tp02.py
+python3 codigo/tp02_fernandez_joaquin.py
 ```
+
+Sin simulador (robot falso): `python3 codigo/pruebas/robot_falso.py [2|3|4]`
+
+> Si se vuelve a clonar `UadeRobotLab`, el enlace `mi_desarrollo/mi_tp02.py` hay que recrearlo:
+> `ln -sf ../../../../codigo/tp02_fernandez_joaquin.py UadeRobotLab/05LaboratoriosTPs/TP02_Programacion_I/mi_desarrollo/mi_tp02.py`

@@ -1,0 +1,16 @@
+$ python3 mi_desarrollo/mi_tp02.py   (MISION_BASICA, contra el simulador Go2)
+[OK] Conectado a Unitree Go2 (perro).
+     Limites: 0.2 m/s, 0.5 rad/s, 10.0 s por orden.
+
+=== Iniciando mision: 4 comando(s) ===
+  [1/4] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [2/4] OK         ('girar', -0.5, 3.14): giro 90 grados a la derecha
+  [3/4] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [4/4] OK         ('detenerse',): se detuvo
+=== Mision finalizada ===
+[OK] Desconectado.
+exit=0
+[OK] Conectado a Unitree Go2 (perro).
+     Limites: 0.2 m/s, 0.5 rad/s, 10.0 s por orden.
+Estado del Go2 despues de MISION_BASICA: x=+0.40 m  y=-0.40 m  rumbo=-90.3 deg  [quieto]
+[OK] Desconectado.

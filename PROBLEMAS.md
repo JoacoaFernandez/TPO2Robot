@@ -67,3 +67,54 @@ python3 -c "import mujoco; print(mujoco.__version__)"
 cd ~/Escritorio/allProject/UADE/TPO2Robot
 source .venv/bin/activate
 ```
+
+---
+
+## Problema N.º 2 — "YA HAY UN SIMULADOR ABIERTO"
+
+**Qué se estaba intentando hacer:** abrir el simulador desde una terminal propia para sacar las capturas de la ventana (niveles 5 y 6).
+
+**Comando ejecutado:**
+```bash
+python3 -m sim --robot go2 --materia tp02
+```
+
+**Resultado esperado:** que se abriera la ventana de MuJoCo con el Go2.
+
+**Resultado obtenido:** la verificación dio todo `[OK]`, pero el simulador no abrió.
+
+**Mensaje de error:**
+```text
+YA HAY UN SIMULADOR ABIERTO
+  Robot   : go2
+  Materia : tp02
+  Proceso : 227645
+Los dos escuchan en el mismo puerto, asi que el segundo no
+podria abrir, o peor: tu programa terminaria hablandole al
+OTRO robot sin ningun error que te avise.
+```
+
+**Interpretación del grupo:**
+No es un error de instalación: es una protección del simulador. Cada simulador escucha en `127.0.0.1:8765` y deja anotado su número de proceso (PID) en `/tmp/uade_simulador_activo.json`. El segundo lee ese archivo, ve que el proceso 227645 sigue vivo y se niega a arrancar.
+
+**Hipótesis sobre la causa:**
+Quedaba abierto un simulador lanzado antes en otra terminal (en segundo plano), el que se había usado para correr las misiones (acciones 19 a 22 de la bitácora). Su ventana abre sin barra de título por Wayland (ver acción 19), así que es fácil no darse cuenta de que está abierta.
+
+**Prueba:**
+```bash
+ps -p 227645 -o pid,cmd
+# → 227645 python3 -u -m sim --robot go2 --materia tp02
+```
+Se confirma: el proceso existe y es un simulador Go2/tp02.
+
+**Solución 1 descartada:** agregar `--igualmente`. El propio mensaje advierte que el programa podría terminar hablándole al otro robot sin avisar, y los dos competirían por el puerto 8765.
+
+**Solución 2 intentada y resultado:** cerrar el simulador anterior con `kill -INT 227645`. Equivale a apretar Ctrl+C en su terminal: le da tiempo a cerrarse ordenadamente y borrar su archivo de "activo". Resultado: `[SIM] Simulador cerrado.`, no queda ningún proceso `sim` y `/tmp/uade_simulador_activo.json` ya no existe.
+
+**Estado final:** ✅ Resuelto.
+
+**Evidencia:**
+- `evidencias/03_errores/03_simulador_ya_abierto.txt` — el mensaje
+- `evidencias/04_soluciones/02_cerrar_simulador_previo.txt` — el diagnóstico y el cierre
+
+**Aprendizaje:** antes de abrir el simulador, revisar que no haya otro (`pgrep -af "python.*-m sim"`) y cerrarlo con Ctrl+C, no cerrando la terminal a lo bruto. Si se mata de golpe, puede quedar el archivo de "activo" huérfano (el caso que menciona `INSTALACION.md`).

@@ -1,0 +1,17 @@
+[OK] Conectado a Unitree Go2 (perro).
+     Limites: 0.2 m/s, 0.5 rad/s, 10.0 s por orden.
+Antes  : x=+0.40 m  y=-0.40 m  rumbo=-90.3 deg  [quieto]
+
+=== Iniciando mision: 9 comando(s) ===
+  [1/9] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [2/9] OK         ('girar', -0.5, 3.14): giro 90 grados a la derecha
+  [3/9] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [4/9] OK         ('girar', -0.5, 3.14): giro 90 grados a la derecha
+  [5/9] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [6/9] OK         ('girar', -0.5, 3.14): giro 90 grados a la derecha
+  [7/9] OK         ('avanzar', 0.2, 2.0): avanzo 0.40 m (0.2 m/s x 2.0 s)
+  [8/9] OK         ('girar', -0.5, 3.14): giro 90 grados a la derecha
+  [9/9] OK         ('detenerse',): se detuvo
+=== Mision finalizada ===
+Despues: x=+0.40 m  y=-0.40 m  rumbo=-89.3 deg  [quieto]
+[OK] Desconectado.

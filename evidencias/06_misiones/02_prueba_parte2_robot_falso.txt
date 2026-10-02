@@ -1,0 +1,33 @@
+$ python3 codigo/pruebas/robot_falso.py
+=== Parte 2 con MISION_BASICA (todo deberia ejecutarse) ===
+  ('avanzar', 0.2, 2.0)
+    [FALSO] avanzar(velocidad=0.2, tiempo=2.0)
+    -> ejecutado=True  texto='avanzo 0.40 m (0.2 m/s x 2.0 s)'
+  ('girar', -0.5, 3.14)
+    [FALSO] girar(velocidad=-0.5, tiempo=3.14)
+    -> ejecutado=True  texto='giro 90 grados a la derecha'
+  ('avanzar', 0.2, 2.0)
+    [FALSO] avanzar(velocidad=0.2, tiempo=2.0)
+    -> ejecutado=True  texto='avanzo 0.40 m (0.2 m/s x 2.0 s)'
+  ('detenerse',)
+    [FALSO] detenerse()
+    -> ejecutado=True  texto='se detuvo'
+
+=== Parte 2: el robot rechaza lo que se escapa de la validacion ===
+  ('avanzar', 0.9, 2.0)
+    [FALSO] detenerse()
+    -> ejecutado=False  texto='el robot lo rechazo: Velocidad 0.900 m/s: el maximo de tp02-programacion-i es 0.20 m/s. Baja la velocidad y volve a probar.'
+  ('girar', 3.0, 2.0)
+    [FALSO] detenerse()
+    -> ejecutado=False  texto='el robot lo rechazo: Velocidad de giro 3.000 rad/s: el maximo de tp02-programacion-i es 0.50 rad/s.'
+  ('avanzar', 0.2, 50.0)
+    [FALSO] detenerse()
+    -> ejecutado=False  texto='el robot lo rechazo: Tiempo 50.00 s: el maximo por comando en tp02-programacion-i es 10.0 s. Parti el movimiento en varios pasos.'
+  ('girar', 0.5, 3.14)
+    [FALSO] girar(velocidad=0.5, tiempo=3.14)
+    -> ejecutado=True  texto='giro 90 grados a la izquierda'
+
+=== Parte 2: robot que no sabe saludar ===
+  ('saludar',)
+    -> ejecutado=False  texto='el robot no puede hacerlo: Este robot no tiene un gesto de saludo.'
+exit=0
