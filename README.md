@@ -12,6 +12,7 @@ TP02 de Programación I (UADE): un controlador de misiones para el robot Unitree
 | `CONCLUSIONES.md` | Reflexión final (preguntas a–g del Orientador) y nivel alcanzado |
 | `INFORME.md` | Informe de una página: diseño Top-Down, valor vs. referencia, misión propia |
 | `ESQUEMA_TOP_DOWN.md` | Esquema de funciones con sus entradas, salidas y responsabilidades |
+| `Presentacion_TP02_Fernandez.pdf` | Presentación de la exposición (14 diapositivas) |
 | `evidencias/` | Salidas de terminal y capturas, por etapa |
 | `UadeRobotLab/` | Repo de la cátedra (https://github.com/tsamaan/UadeRobotLab), incluido tal cual, sin modificar: simulador, `robot.py` y `misiones.py`. No es trabajo propio |
 | `.venv/` | Entorno virtual de Python con MuJoCo (no versionado) |
