@@ -44,8 +44,3 @@ Nivel 10. Las tres misiones de la cátedra y una propia corrieron contra el geme
 - **Leer misiones desde un archivo JSON** (Extensión 1), para cambiar la misión sin tocar el código.
 - **Analizar la misión antes de ejecutarla** (Extensión 4): mostrar distancia y tiempo estimados y avisar los comandos inválidos antes de mover el robot.
 
-## Observaciones técnicas
-
-- La validación del robot es más permisiva que la que pide el TP: acepta `"0.2"` como número y velocidades negativas en `avanzar`. Por eso la validación propia no confía en el robot.
-- Las posiciones informadas por el simulador coincidieron con las calculadas: la misión básica terminó en `x=+0.40 y=-0.40 rumbo=-90°`, y el cuadrado volvió al punto de partida.
-- Para probar sin el simulador construí un robot falso (`robot_falso.py`, que no se incluye en esta entrega: sus salidas están en `evidencias/06_misiones/`) que usa los mismos validadores de `safety.py`. Permitió verificar las partes 2 a 4 antes de tener el gemelo digital andando.

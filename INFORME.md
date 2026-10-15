@@ -4,7 +4,7 @@
 
 ## 1. Diseño Top-Down aplicado
 
-Partí del problema general, "ejecutar cualquier misión sin que un comando malo la corte", y lo dividí en cuatro sub-problemas, uno por función: **validar** un comando (`comando_es_valido`), **ejecutar** un comando (`ejecutar_comando`), **recorrer** la misión (`ejecutar_mision`) e **informar** (`generar_reporte`). El `main()` solo las combina y tiene 11 líneas.
+Partí del problema general, "ejecutar cualquier misión sin que un comando malo la corte", y lo dividí en cuatro sub-problemas, uno por función: **validar** un comando (`comando_es_valido`), **ejecutar** un comando (`ejecutar_comando`), **recorrer** la misión (`ejecutar_mision`) e **informar** (`generar_reporte`). El `main()` solo las combina y tiene 13 líneas, menos de las 15 que pide la consigna.
 
 Al implementar la validación apareció un sub-problema más: el reporte tiene que mostrar el *motivo* de cada rechazo, y un `True`/`False` no alcanza para eso. Lo resolví bajando un nivel más: `motivo_de_rechazo()` devuelve el texto del problema (o `""`, texto vacío, si está bien), y `comando_es_valido()` queda en una línea que la reutiliza, sin duplicar lógica. Lo mismo con `es_numero()`, que encapsula la pregunta "¿esto es un número de verdad?".
 
@@ -24,6 +24,6 @@ Antes de correrla calculé a mano lo esperado: 8 ejecutados, 3 rechazados, 1.5 m
 
 ## 4. Decisiones que vale la pena justificar
 
-- **Validación más estricta que la del robot.** El robot convierte con `float()`, así que aceptaría `"0.2"` (texto) y velocidades negativas en `avanzar`. Mi validación exige el tipo correcto con `type()` (`type(True)` es `bool`, así que un `bool` no pasa) y pide velocidad positiva para avanzar.
+- **Validación más estricta que la del robot.** El robot convierte con `float()`, así que aceptaría `"0.2"` (texto) y velocidades negativas en `avanzar`. Mi validación revisa con `type()` que la velocidad y el tiempo sean `int` o `float`, así que un texto o un `True`/`False` no pasan, y pide velocidad positiva para avanzar.
 - **`try/except ErrorDeSeguridad` igual.** Es la segunda red: si un comando se escapara de mi validación, el robot lo rechaza, el programa lo atrapa, frena el robot y sigue.
 - **Constantes en lugar de números sueltos.** Todos los límites salen de `VELOCIDAD_MAX`, `VELOCIDAD_GIRO_MAX` y `TIEMPO_MAX`, iguales al perfil `tp02` de la cátedra.

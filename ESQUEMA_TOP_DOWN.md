@@ -51,7 +51,7 @@ es_numero(valor)
 |---|---|---|
 | Comando | tupla | `("avanzar", 0.2, 2.0)` · `("detenerse",)` |
 | Misión | lista de tuplas | `[("avanzar", 0.2, 2.0), ("girar", -0.5, 3.14), ...]` |
-| Historial | lista de diccionarios (crece en el bucle) | `{"numero": 3, "comando": (...), "ejecutado": False, "detalle": "0.9 m/s esta fuera del rango..."}` |
+| Historial | lista de diccionarios (crece en el bucle) | `{"numero": 3, "comando": (...), "ejecutado": False, "detalle": "la velocidad esta fuera del rango permitido"}` |
 | Límites | constantes globales | `VELOCIDAD_MAX = 0.20`, `VELOCIDAD_GIRO_MAX = 0.50`, `TIEMPO_MAX = 10.0` |
 | Comandos válidos | diccionario constante | `DATOS_POR_COMANDO = {"avanzar": 2, "girar": 2, "detenerse": 0, "saludar": 0}` |
 
