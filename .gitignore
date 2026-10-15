@@ -1,8 +1,0 @@
-# Entorno virtual de Python (se recrea con: python3 -m venv .venv && pip install mujoco)
-.venv/
-
-# Repo de la cátedra (tiene su propio .git; se obtiene con git clone, ver README)
-UadeRobotLab/
-
-__pycache__/
-*.pyc

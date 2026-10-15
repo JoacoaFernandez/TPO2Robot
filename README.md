@@ -11,10 +11,8 @@ TP02 de Programación I (UADE): un controlador de misiones para el robot Unitree
 | `CONCLUSIONES.md` | Reflexión final (preguntas a–g del Orientador) y nivel alcanzado |
 | `INFORME.md` | Informe de una página: diseño Top-Down, valor vs. referencia, misión propia |
 | `ESQUEMA_TOP_DOWN.md` | Esquema de funciones con sus entradas, salidas y responsabilidades |
-| `codigo/tp02_fernandez_joaquin.py` | **El controlador (lo que se entrega).** En `UadeRobotLab/.../mi_desarrollo/mi_tp02.py` hay un enlace simbólico a este archivo |
-| `codigo/pruebas/robot_falso.py` | Robot falso para probar las partes 2 a 4 sin el simulador |
+| `codigo/tp02_fernandez_joaquin.py` | **El controlador (lo que se entrega).** En `UadeRobotLab/.../mi_desarrollo/mi_tp02.py` hay una copia idéntica, que es la que se ejecuta |
 | `evidencias/` | Salidas de terminal y capturas, por etapa |
-| `enunciado/` | Consigna del TP y Orientador, pasados a Markdown |
 | `UadeRobotLab/` | Repo de la cátedra (no versionado, ver abajo) |
 | `.venv/` | Entorno virtual de Python con MuJoCo (no versionado) |
 
@@ -44,10 +42,10 @@ python3 -m sim --robot go2 --materia tp02      # o ../INICIAR_SIMULADOR.sh y ele
 Terminal 2 (programa: corre las 4 misiones y sus reportes):
 ```bash
 source .venv/bin/activate
-python3 codigo/tp02_fernandez_joaquin.py
+python3 UadeRobotLab/05LaboratoriosTPs/TP02_Programacion_I/mi_desarrollo/mi_tp02.py
 ```
 
-Sin simulador (robot falso): `python3 codigo/pruebas/robot_falso.py [2|3|4]`
 
-> Si se vuelve a clonar `UadeRobotLab`, el enlace `mi_desarrollo/mi_tp02.py` hay que recrearlo:
-> `ln -sf ../../../../codigo/tp02_fernandez_joaquin.py UadeRobotLab/05LaboratoriosTPs/TP02_Programacion_I/mi_desarrollo/mi_tp02.py`
+> `mi_desarrollo/mi_tp02.py` es una **copia real** de `codigo/tp02_fernandez_joaquin.py` (no un enlace). Cada vez que se edita el código hay que volver a copiarlo:
+> `cp codigo/tp02_fernandez_joaquin.py UadeRobotLab/05LaboratoriosTPs/TP02_Programacion_I/mi_desarrollo/mi_tp02.py`
+> y se ejecuta con `python3 UadeRobotLab/05LaboratoriosTPs/TP02_Programacion_I/mi_desarrollo/mi_tp02.py` (el archivo importa `robot.py` y `misiones.py`, que están en esa carpeta).

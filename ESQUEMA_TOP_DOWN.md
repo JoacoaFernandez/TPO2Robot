@@ -26,7 +26,7 @@ comando_es_valido(comando)      ejecutar_comando(robot, comando)
    │                             llama a avanzar / girar / detenerse /
    ▼                             saludar; atrapa ErrorDeSeguridad
 motivo_de_rechazo(comando)
- -> texto del problema o None
+ -> texto del problema o "" (vacío)
    │
    ▼
 es_numero(valor)
@@ -37,8 +37,8 @@ es_numero(valor)
 
 | Función | Recibe | Devuelve | Responsabilidad (una sola) |
 |---|---|---|---|
-| `es_numero` | un valor | `bool` | ¿es un `int`/`float` finito? (no `bool`, no texto) |
-| `motivo_de_rechazo` | un comando | `str` o `None` | encontrar el primer problema del comando |
+| `es_numero` | un valor | `bool` | ¿es un `int`/`float`? (no `bool`, no texto) |
+| `motivo_de_rechazo` | un comando | `str` (`""` si está bien) | encontrar el primer problema del comando |
 | `comando_es_valido` | un comando | `bool` | decidir si se puede ejecutar |
 | `ejecutar_comando` | robot, comando | `(bool, str)` | traducir el comando a una orden del robot y atrapar su rechazo |
 | `ejecutar_mision` | robot, misión, historial | nada | recorrer la misión y registrar cada comando en el historial |
